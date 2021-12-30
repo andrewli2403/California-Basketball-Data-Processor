@@ -110,7 +110,17 @@ def get_date(game_id):
     date = webpage.find("header", attrs={"class", "top-stories__story-header"}).find("span", attrs={"class", "date"}).get_text()
     return date
 
-
+#rounds data based on stat parameters
+def clean(series):
+    if series.name == "Game" or series.name == "Reb +/-" or series.name == "3pt +/-":
+        return series
+    elif series.name == "OER" or series.name == "DER":
+        return series.astype('float64').round(2)
+    elif series.name == "Def FT RATE, %" or series.name == "Off FT Rate, %":
+        #encounters tuple data structure of two valued stat
+        return series.apply(lambda stats: tuple(map(round, stats)))
+    else:
+        return series.astype('int32')
 
 
     
