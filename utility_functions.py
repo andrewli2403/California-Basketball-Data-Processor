@@ -7,7 +7,7 @@ import pandas as pd
 def processor(game_id):
     url = "https://www.espn.com/mens-college-basketball/matchup?gameId=" + str(game_id)
     r = requests.get(url)
-    webpage = bs(r.content)
+    webpage = bs(r.content, features="html.parser")
 
     #create dictionary for CAL & opponent with respective scores
     team_name = [name.string for name in webpage.find_all("td", attrs={"class", "team-name"})]
@@ -106,7 +106,7 @@ def processor(game_id):
 def get_date(game_id):
     url = "https://www.espn.com/mens-college-basketball/game/_/gameId/" + str(game_id)
     r = requests.get(url)
-    webpage = bs(r.content)
+    webpage = bs(r.content, features="html.parser")
     date = webpage.find("header", attrs={"class", "top-stories__story-header"}).find("span", attrs={"class", "date"}).get_text()
     return date
 
