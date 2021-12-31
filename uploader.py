@@ -30,4 +30,3 @@ gd.set_with_dataframe(sheet, updated)
 
 
 d2g.upload(df, spreadsheet_key, wks_name, credentials=creds, row_names=True)
-

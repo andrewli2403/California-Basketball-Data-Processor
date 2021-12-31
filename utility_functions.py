@@ -121,6 +121,3 @@ def clean(series):
         return series.apply(lambda stats: tuple(map(round, stats)))
     else:
         return series.astype('int32')
-
-
-    
