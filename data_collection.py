@@ -8,8 +8,8 @@ from dateutil.parser import parse
 Newlimit = 10000
 limit = sys.setrecursionlimit(Newlimit)
 
-#run the code one day after the gameday
-exe_time = datetime.today() - timedelta(days=1)
+#run the code 5 hours after the gametime
+exe_time = datetime.today() - timedelta(hours=5)
 
 #collection of game_ids and the respective datetime each game occured at
 game_ids = [401373623, 401372480, 401373871, 401372618, 401371841, 401376644, 401372389, 401370905, 401370930, 401372467, 401371139, 401373872, 401371302, 401398909, 401377400, 401377403, 401377407, 401377413, 401377419, 401377429, 401377432, 401377437, 401377446, 401377447, 401377453, 401377457, 401377465, 401377469, 401377483, 401377484, 401377490]
