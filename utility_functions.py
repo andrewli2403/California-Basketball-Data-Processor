@@ -107,8 +107,9 @@ def get_date(game_id):
     url = "https://www.espn.com/mens-college-basketball/game/_/gameId/" + str(game_id)
     r = requests.get(url)
     webpage = bs(r.content, features="html.parser")
-    date = webpage.find("header", attrs={"class", "top-stories__story-header"}).find("span", attrs={"class", "date"}).get_text()
+    date = re.findall('(?:January|February|March|April|May|June|July|August|September|October|November|December)\s[1-9][1-9]?,\s[0-9]{4}', webpage.find("title").get_text())[0]
     return date
+
 
 #rounds data based on stat parameters
 def clean(series):
@@ -121,3 +122,7 @@ def clean(series):
         return series.apply(lambda stats: tuple(map(round, stats)))
     else:
         return series.astype('int32')
+
+#converts datetime object into MM/DD/YYYY format
+def date_convert(datetime_obj):
+    return f"{datetime_obj.month}/{datetime_obj.day}/{datetime_obj.year}"
