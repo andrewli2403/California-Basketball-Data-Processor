@@ -11,5 +11,5 @@ Utilizes BeautifulSoup, pandas, and crontab to automate data collection and stat
 crontab schedule: set to run at every other hour
 
 # Result
-<img src="images/spreadsheet results" width = 800>
+<img src="images/spreadsheet results.png" width = 800>
 
